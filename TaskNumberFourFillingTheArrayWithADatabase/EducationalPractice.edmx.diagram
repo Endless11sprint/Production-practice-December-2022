@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cab37d3d2a574d89bb97284875d3276c" Name="Diagram1">
+        <EntityTypeShape EntityType="EducationalPracticeModel.CategoriesOfWords" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationalPracticeModel.EnglishWord" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationalPracticeModel.EnglishWordAndTranslationOfEnglishWordIntoRussian" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationalPracticeModel.EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationalPracticeModel.PathsToVoiceFilesThatWereCreatedByTheUser" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationalPracticeModel.TranslationOfEnglishWordIntoRussian" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="EducationalPracticeModel.FK_EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords_CategoriesOfWords" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationalPracticeModel.FK_EnglishWord_PathsToVoiceFilesThatWereCreatedByTheUser" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationalPracticeModel.FK_EnglishWordAndTranslationOfEnglishWordIntoRussian_EnglishWord" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationalPracticeModel.FK_EnglishWordAndTranslationOfEnglishWordIntoRussian_TranslationOfEnglishWordIntoRussian" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationalPracticeModel.FK_EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords_EnglishWordAndTranslationOfEnglishWordIntoRussian" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

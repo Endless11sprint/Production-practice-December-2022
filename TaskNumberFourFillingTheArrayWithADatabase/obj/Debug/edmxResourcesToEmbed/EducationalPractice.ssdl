@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище EducationalPracticeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CategoriesOfWords">
+    <Key>
+      <PropertyRef Name="idCategoriesOfWords(pk)" />
+    </Key>
+    <Property Name="idCategoriesOfWords(pk)" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Categorie" Type="nchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EnglishWord">
+    <Key>
+      <PropertyRef Name="idEnglishWord(pk)" />
+    </Key>
+    <Property Name="idEnglishWord(pk)" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idPathsToVoiceFilesThatWereCreatedByTheUserEnglishWord(fk)" Type="int" />
+    <Property Name="Word" Type="nchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EnglishWordAndTranslationOfEnglishWordIntoRussian">
+    <Key>
+      <PropertyRef Name="EnglishWordAndTranslationOfEnglishWordIntoRussian" />
+    </Key>
+    <Property Name="EnglishWordAndTranslationOfEnglishWordIntoRussian" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idEnglishWord(fk)" Type="int" Nullable="false" />
+    <Property Name="idTranslationOfEnglishWordIntoRussian(fk)" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords">
+    <Key>
+      <PropertyRef Name="idEnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords(pk)" />
+    </Key>
+    <Property Name="idEnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords(pk)" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EnglishWordAndTranslationOfEnglishWordIntoRussian(fk)" Type="int" Nullable="false" />
+    <Property Name="idCategoriesOfWords(fk)" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PathsToVoiceFilesThatWereCreatedByTheUser">
+    <Key>
+      <PropertyRef Name="idPathsToVoiceFilesThatWereCreatedByTheUser(pk)" />
+    </Key>
+    <Property Name="idPathsToVoiceFilesThatWereCreatedByTheUser(pk)" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Path" Type="nchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TranslationOfEnglishWordIntoRussian">
+    <Key>
+      <PropertyRef Name="idTranslationOfEnglishWordIntoRussian(pk)" />
+    </Key>
+    <Property Name="idTranslationOfEnglishWordIntoRussian(pk)" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MeaningOfTheWordInRussian" Type="nchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_EnglishWord_PathsToVoiceFilesThatWereCreatedByTheUser">
+    <End Role="PathsToVoiceFilesThatWereCreatedByTheUser" Type="Self.PathsToVoiceFilesThatWereCreatedByTheUser" Multiplicity="0..1" />
+    <End Role="EnglishWord" Type="Self.EnglishWord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PathsToVoiceFilesThatWereCreatedByTheUser">
+        <PropertyRef Name="idPathsToVoiceFilesThatWereCreatedByTheUser(pk)" />
+      </Principal>
+      <Dependent Role="EnglishWord">
+        <PropertyRef Name="idPathsToVoiceFilesThatWereCreatedByTheUserEnglishWord(fk)" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnglishWordAndTranslationOfEnglishWordIntoRussian_EnglishWord">
+    <End Role="EnglishWord" Type="Self.EnglishWord" Multiplicity="1" />
+    <End Role="EnglishWordAndTranslationOfEnglishWordIntoRussian" Type="Self.EnglishWordAndTranslationOfEnglishWordIntoRussian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnglishWord">
+        <PropertyRef Name="idEnglishWord(pk)" />
+      </Principal>
+      <Dependent Role="EnglishWordAndTranslationOfEnglishWordIntoRussian">
+        <PropertyRef Name="idEnglishWord(fk)" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnglishWordAndTranslationOfEnglishWordIntoRussian_TranslationOfEnglishWordIntoRussian">
+    <End Role="TranslationOfEnglishWordIntoRussian" Type="Self.TranslationOfEnglishWordIntoRussian" Multiplicity="1" />
+    <End Role="EnglishWordAndTranslationOfEnglishWordIntoRussian" Type="Self.EnglishWordAndTranslationOfEnglishWordIntoRussian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TranslationOfEnglishWordIntoRussian">
+        <PropertyRef Name="idTranslationOfEnglishWordIntoRussian(pk)" />
+      </Principal>
+      <Dependent Role="EnglishWordAndTranslationOfEnglishWordIntoRussian">
+        <PropertyRef Name="idTranslationOfEnglishWordIntoRussian(fk)" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords_CategoriesOfWords">
+    <End Role="CategoriesOfWords" Type="Self.CategoriesOfWords" Multiplicity="1" />
+    <End Role="EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords" Type="Self.EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoriesOfWords">
+        <PropertyRef Name="idCategoriesOfWords(pk)" />
+      </Principal>
+      <Dependent Role="EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords">
+        <PropertyRef Name="idCategoriesOfWords(fk)" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords_EnglishWordAndTranslationOfEnglishWordIntoRussian">
+    <End Role="EnglishWordAndTranslationOfEnglishWordIntoRussian" Type="Self.EnglishWordAndTranslationOfEnglishWordIntoRussian" Multiplicity="1" />
+    <End Role="EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords" Type="Self.EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnglishWordAndTranslationOfEnglishWordIntoRussian">
+        <PropertyRef Name="EnglishWordAndTranslationOfEnglishWordIntoRussian" />
+      </Principal>
+      <Dependent Role="EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords">
+        <PropertyRef Name="EnglishWordAndTranslationOfEnglishWordIntoRussian(fk)" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище EducationalPracticeModelContainer">
+    <EntitySet Name="CategoriesOfWords" EntityType="Self.CategoriesOfWords" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnglishWord" EntityType="Self.EnglishWord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnglishWordAndTranslationOfEnglishWordIntoRussian" EntityType="Self.EnglishWordAndTranslationOfEnglishWordIntoRussian" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords" EntityType="Self.EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PathsToVoiceFilesThatWereCreatedByTheUser" EntityType="Self.PathsToVoiceFilesThatWereCreatedByTheUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TranslationOfEnglishWordIntoRussian" EntityType="Self.TranslationOfEnglishWordIntoRussian" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_EnglishWord_PathsToVoiceFilesThatWereCreatedByTheUser" Association="Self.FK_EnglishWord_PathsToVoiceFilesThatWereCreatedByTheUser">
+      <End Role="PathsToVoiceFilesThatWereCreatedByTheUser" EntitySet="PathsToVoiceFilesThatWereCreatedByTheUser" />
+      <End Role="EnglishWord" EntitySet="EnglishWord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnglishWordAndTranslationOfEnglishWordIntoRussian_EnglishWord" Association="Self.FK_EnglishWordAndTranslationOfEnglishWordIntoRussian_EnglishWord">
+      <End Role="EnglishWord" EntitySet="EnglishWord" />
+      <End Role="EnglishWordAndTranslationOfEnglishWordIntoRussian" EntitySet="EnglishWordAndTranslationOfEnglishWordIntoRussian" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnglishWordAndTranslationOfEnglishWordIntoRussian_TranslationOfEnglishWordIntoRussian" Association="Self.FK_EnglishWordAndTranslationOfEnglishWordIntoRussian_TranslationOfEnglishWordIntoRussian">
+      <End Role="TranslationOfEnglishWordIntoRussian" EntitySet="TranslationOfEnglishWordIntoRussian" />
+      <End Role="EnglishWordAndTranslationOfEnglishWordIntoRussian" EntitySet="EnglishWordAndTranslationOfEnglishWordIntoRussian" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords_CategoriesOfWords" Association="Self.FK_EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords_CategoriesOfWords">
+      <End Role="CategoriesOfWords" EntitySet="CategoriesOfWords" />
+      <End Role="EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords" EntitySet="EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords_EnglishWordAndTranslationOfEnglishWordIntoRussian" Association="Self.FK_EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords_EnglishWordAndTranslationOfEnglishWordIntoRussian">
+      <End Role="EnglishWordAndTranslationOfEnglishWordIntoRussian" EntitySet="EnglishWordAndTranslationOfEnglishWordIntoRussian" />
+      <End Role="EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords" EntitySet="EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

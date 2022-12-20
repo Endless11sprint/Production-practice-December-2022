@@ -1,0 +1,30 @@
+﻿<Window x:Class="TaskNumberFourFillingTheArrayWithADatabase.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="InkRecognition">
+    <Canvas Name="theRootCanvas">
+        <Border
+      Background="White"
+      BorderBrush="Black"
+      BorderThickness="2"
+      Height="300"
+      Width="300"
+      Canvas.Top="10"
+      Canvas.Left="10">
+            <InkCanvas Name="theInkCanvas"></InkCanvas>
+        </Border>
+        <TextBox Name="textBox1"
+      Height="25"
+      Width="225"
+      Canvas.Top="325"
+      Canvas.Left="10"></TextBox>
+        <Button
+      Height="25"
+      Width="75"
+      Canvas.Top="325"
+      Canvas.Left="235"
+      Click="buttonClick" Content="Распознать"></Button>
+        <Button x:Name="btnClear" Content="Очистить канвас" Canvas.Left="10" Canvas.Top="367" Width="99" Click="btnClear_Click" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button x:Name="btnVoiceOver" Content="Произнести слово" Canvas.Left="160" Canvas.Top="367" Width="112" Click="btnVoiceOver_Click" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+    </Canvas>
+</Window>
