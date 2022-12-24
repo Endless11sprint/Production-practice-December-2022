@@ -1,0 +1,26 @@
+﻿<Window x:Class="TaskNumberFourFillingTheArrayWithADatabase.VoiceActingOfAlreadyAddedWords"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskNumberFourFillingTheArrayWithADatabase"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            
+        </Grid.RowDefinitions>
+        <Button Grid.Row="1" Content="Записать слово" Name="StartReconding" Click="StartReconding_Click" ></Button>
+        <Button Grid.Row="2" Content="Остановка записи" Name="StopRecording" Click="StopRecording_Click" ></Button>
+        <Button Grid.Row="3" Content="Воспроизвести запись" Name="PlayTheRecording" Click="PlayTheRecording_Click"></Button>
+        <Button Grid.Row="4" Content="Сохранить озвучку слова" Name="SaveRecording" Click="SaveRecording_Click"></Button>
+        <TextBlock Text="Выберите слово, которое вы хотите записать:" Grid.Row="0"/>
+        <ComboBox SelectedItem="{Binding EnglishWord}" DisplayMemberPath="Word" IsEditable="True" IsReadOnly="False" Margin="66,18,66,10" Name="ComboSelectWord" Grid.Row="0"/>
+    </Grid>
+</Window>

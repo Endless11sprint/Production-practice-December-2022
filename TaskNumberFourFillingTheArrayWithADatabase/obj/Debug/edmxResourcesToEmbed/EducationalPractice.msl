@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище EducationalPracticeModelContainer" CdmEntityContainer="EducationalPracticeEntities">
+    <EntitySetMapping Name="CategoriesOfWords">
+      <EntityTypeMapping TypeName="EducationalPracticeModel.CategoriesOfWords">
+        <MappingFragment StoreEntitySet="CategoriesOfWords">
+          <ScalarProperty Name="idCategoriesOfWords_pk_" ColumnName="idCategoriesOfWords(pk)" />
+          <ScalarProperty Name="Categorie" ColumnName="Categorie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnglishWord">
+      <EntityTypeMapping TypeName="EducationalPracticeModel.EnglishWord">
+        <MappingFragment StoreEntitySet="EnglishWord">
+          <ScalarProperty Name="idEnglishWord_pk_" ColumnName="idEnglishWord(pk)" />
+          <ScalarProperty Name="idPathsToVoiceFilesThatWereCreatedByTheUserEnglishWord_fk_" ColumnName="idPathsToVoiceFilesThatWereCreatedByTheUserEnglishWord(fk)" />
+          <ScalarProperty Name="Word" ColumnName="Word" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnglishWordAndTranslationOfEnglishWordIntoRussian">
+      <EntityTypeMapping TypeName="EducationalPracticeModel.EnglishWordAndTranslationOfEnglishWordIntoRussian">
+        <MappingFragment StoreEntitySet="EnglishWordAndTranslationOfEnglishWordIntoRussian">
+          <ScalarProperty Name="EnglishWordAndTranslationOfEnglishWordIntoRussian1" ColumnName="EnglishWordAndTranslationOfEnglishWordIntoRussian" />
+          <ScalarProperty Name="idEnglishWord_fk_" ColumnName="idEnglishWord(fk)" />
+          <ScalarProperty Name="idTranslationOfEnglishWordIntoRussian_fk_" ColumnName="idTranslationOfEnglishWordIntoRussian(fk)" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords">
+      <EntityTypeMapping TypeName="EducationalPracticeModel.EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords">
+        <MappingFragment StoreEntitySet="EnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords">
+          <ScalarProperty Name="idEnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords_pk_" ColumnName="idEnglishWordAndTranslationOfEnglishWordIntoRussianAndCategoriesOfWords(pk)" />
+          <ScalarProperty Name="EnglishWordAndTranslationOfEnglishWordIntoRussian_fk_" ColumnName="EnglishWordAndTranslationOfEnglishWordIntoRussian(fk)" />
+          <ScalarProperty Name="idCategoriesOfWords_fk_" ColumnName="idCategoriesOfWords(fk)" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PathsToVoiceFilesThatWereCreatedByTheUser">
+      <EntityTypeMapping TypeName="EducationalPracticeModel.PathsToVoiceFilesThatWereCreatedByTheUser">
+        <MappingFragment StoreEntitySet="PathsToVoiceFilesThatWereCreatedByTheUser">
+          <ScalarProperty Name="idPathsToVoiceFilesThatWereCreatedByTheUser_pk_" ColumnName="idPathsToVoiceFilesThatWereCreatedByTheUser(pk)" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TranslationOfEnglishWordIntoRussian">
+      <EntityTypeMapping TypeName="EducationalPracticeModel.TranslationOfEnglishWordIntoRussian">
+        <MappingFragment StoreEntitySet="TranslationOfEnglishWordIntoRussian">
+          <ScalarProperty Name="idTranslationOfEnglishWordIntoRussian_pk_" ColumnName="idTranslationOfEnglishWordIntoRussian(pk)" />
+          <ScalarProperty Name="MeaningOfTheWordInRussian" ColumnName="MeaningOfTheWordInRussian" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
